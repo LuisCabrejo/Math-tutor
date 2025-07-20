@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔧 Math Tutor - Diagnóstico</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .test-item {
+            background: rgba(255,255,255,0.1);
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #feca57;
+        }
+        .test-pass { border-left-color: #2ecc71; }
+        .test-fail { border-left-color: #e74c3c; }
+        .test-loading { border-left-color: #f39c12; }
+        pre {
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        button {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 10px 5px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Math Tutor - Diagnóstico del Sistema</h1>
+        <p>Esta página te ayuda a identificar y solucionar problemas de carga de archivos.</p>
+
+        <div id="results">
+            <div class="test-item test-loading">
+                <h3>⏳ Ejecutando diagnóstico...</h3>
+                <p>Por favor, espera mientras verificamos todos los componentes.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <button onclick="runDiagnostic()">🔄 Re-ejecutar Diagnóstico</button>
+            <button onclick="testMathParser()">🧮 Probar Math Parser</button>
+            <button onclick="showFileContents()">📄 Mostrar Archivos</button>
+        </div>
+
+        <div id="fileContents" style="margin-top: 20px;"></div>
+    </div>
+
+    <!-- Scripts con diagnóstico -->
+    <script>
+        let diagnosticResults = {};
+
+        // Verificar carga de archivos
+        function checkFileLoading() {
+            const tests = {
+                'HTML Base': document.readyState === 'complete',
+                'MathParser Class': typeof MathParser !== 'undefined',
+                'Exercise Data': typeof predefinedExercises !== 'undefined',
+                'Quick Examples': typeof quickExamples !== 'undefined',
+                'Educational Messages': typeof educationalMessages !== 'undefined'
+            };
+
+            return tests;
+        }
+
+        function runDiagnostic() {
+            const results = document.getElementById('results');
+            const tests = checkFileLoading();
+
+            let html = '<h2>📊 Resultados del Diagnóstico</h2>';
+
+            Object.entries(tests).forEach(([testName, passed]) => {
+                const status = passed ? 'test-pass' : 'test-fail';
+                const icon = passed ? '✅' : '❌';
+
+                html += `
+                    <div class="test-item ${status}">
+                        <h3>${icon} ${testName}</h3>
+                        <p>Estado: <strong>${passed ? 'CORRECTO' : 'ERROR'}</strong></p>
+                    </div>
+                `;
+            });
+
+            // Verificar estructura de archivos
+            html += '<h3>📁 Estructura de Archivos Esperada:</h3>';
+            html += `
+                <pre>math_tutor/
+├── index.html
+├── debug.html (este archivo)
+├── css/
+│   └── style.css
+├── js/
+│   ├── mathParser.js
+│   ├── exerciseData.js
+│   └── script.js
+└── app.py (opcional)</pre>
+            `;
+
+            // Recomendaciones
+            const failedTests = Object.entries(tests).filter(([,passed]) => !passed);
+            if (failedTests.length > 0) {
+                html += '<h3>🔧 Soluciones Recomendadas:</h3>';
+                html += '<div class="test-item test-fail">';
+
+                if (!tests['MathParser Class']) {
+                    html += '<p><strong>❌ MathParser no encontrado:</strong><br>';
+                    html += '• Verifica que el archivo <code>js/mathParser.js</code> existe<br>';
+                    html += '• Comprueba que la ruta sea correcta en index.html<br>';
+                    html += '• Asegúrate de usar un servidor HTTP (no file://)</p>';
+                }
+
+                if (!tests['Exercise Data']) {
+                    html += '<p><strong>❌ Datos de ejercicios no encontrados:</strong><br>';
+                    html += '• Verifica que el archivo <code>js/exerciseData.js</code> existe<br>';
+                    html += '• Comprueba la sintaxis del archivo JavaScript</p>';
+                }
+
+                html += '<p><strong>🚀 Comando recomendado:</strong><br>';
+                html += '<code>python -m http.server 8000</code><br>';
+                html += 'Luego visita: <code>http://localhost:8000</code></p>';
+                html += '</div>';
+            } else {
+                html += '<div class="test-item test-pass">';
+                html += '<h3>🎉 ¡Todo está funcionando correctamente!</h3>';
+                html += '<p>Puedes proceder a usar Math Tutor sin problemas.</p>';
+                html += '</div>';
+            }
+
+            results.innerHTML = html;
+        }
+
+        function testMathParser() {
+            if (typeof MathParser === 'undefined') {
+                alert('❌ MathParser no está disponible. Revisa la carga de js/mathParser.js');
+                return;
+            }
+
+            try {
+                const parser = new MathParser();
+                const result = parser.evaluateCustomExpression('∛27+√16');
+
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML += `
+                    <div class="test-item test-pass">
+                        <h3>🧮 Prueba de Math Parser</h3>
+                        <p><strong>Expresión:</strong> ∛27+√16</p>
+                        <p><strong>Resultado:</strong> ${result.result}</p>
+                        <p><strong>Éxito:</strong> ${result.success ? 'SÍ' : 'NO'}</p>
+                        <p><strong>Pasos:</strong> ${result.steps ? result.steps.length : 0} pasos generados</p>
+                    </div>
+                `;
+            } catch (error) {
+                alert('❌ Error al probar MathParser: ' + error.message);
+            }
+        }
+
+        function showFileContents() {
+            const container = document.getElementById('fileContents');
+            container.innerHTML = `
+                <h3>📄 Contenido Esperado de los Archivos</h3>
+                <div class="test-item">
+                    <h4>js/mathParser.js debe empezar con:</h4>
+                    <pre>/**
+ * MATH PARSER - Sistema de evaluación matemática robusto
+ */
+
+class MathParser {
+    constructor() {
+        this.steps = [];</pre>
+                </div>
+
+                <div class="test-item">
+                    <h4>js/exerciseData.js debe empezar con:</h4>
+                    <pre>/**
+ * EXERCISE DATA - Datos de ejercicios predefinidos
+ */
+
+const predefinedExercises = {</pre>
+                </div>
+
+                <div class="test-item">
+                    <h4>js/script.js debe empezar con:</h4>
+                    <pre>/**
+ * MATH TUTOR - SCRIPT PRINCIPAL
+ */
+
+// Variables globales (ya declaradas en HTML)</pre>
+                </div>
+            `;
+        }
+
+        // Ejecutar diagnóstico automáticamente al cargar
+        window.addEventListener('load', function() {
+            setTimeout(runDiagnostic, 1000);
+        });
+    </script>
+
+    <!-- Intentar cargar archivos de Math Tutor -->
+    <script src="js/mathParser.js" onerror="console.error('❌ No se pudo cargar mathParser.js')"></script>
+    <script src="js/exerciseData.js" onerror="console.error('❌ No se pudo cargar exerciseData.js')"></script>
+    <script>
+        console.log('🔧 Diagnóstico de Math Tutor iniciado');
+        console.log('📊 MathParser disponible:', typeof MathParser !== 'undefined');
+        console.log('📊 Exercise data disponible:', typeof predefinedExercises !== 'undefined');
+    </script>
+</body>
+</html>

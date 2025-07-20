@@ -1,0 +1,108 @@
+{
+  "name": "math-tutor",
+  "version": "1.0.0",
+  "description": "🧮 Herramienta educativa web para estudiantes de 12-15 años que resuelve ejercicios matemáticos complejos con explicaciones paso a paso siguiendo la metodología PEMDAS",
+  "main": "index.html",
+  "scripts": {
+    "start": "python app.py",
+    "dev": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "build": "echo 'No build process needed for pure HTML/CSS/JS'",
+    "test": "echo 'No tests specified yet'",
+    "lint": "echo 'Consider adding ESLint for code quality'",
+    "deploy": "echo 'Ready for deployment to Vercel/Netlify'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tu-usuario/math-tutor.git"
+  },
+  "keywords": [
+    "math",
+    "education",
+    "mathematics",
+    "tutor",
+    "pemdas",
+    "calculator",
+    "learning",
+    "students",
+    "educational-tool",
+    "javascript",
+    "html5",
+    "css3",
+    "flask",
+    "python",
+    "interactive",
+    "step-by-step",
+    "fractions",
+    "roots",
+    "powers",
+    "algebra"
+  ],
+  "author": {
+    "name": "Tu Nombre",
+    "email": "tu-email@ejemplo.com",
+    "url": "https://github.com/tu-usuario"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tu-usuario/math-tutor/issues"
+  },
+  "homepage": "https://github.com/tu-usuario/math-tutor#readme",
+  "engines": {
+    "node": ">=14.0.0",
+    "python": ">=3.8.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "optionalDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^2.0.0"
+  },
+  "config": {
+    "port": "8000",
+    "flask_port": "5000"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/tu-usuario"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "files": [
+    "index.html",
+    "css/",
+    "js/",
+    "app.py",
+    "README.md",
+    "LICENSE"
+  ],
+  "math-tutor": {
+    "features": {
+      "predefined_exercises": 5,
+      "custom_expressions": true,
+      "step_by_step_solutions": true,
+      "pemdas_methodology": true,
+      "mobile_responsive": true,
+      "flask_backend": true
+    },
+    "supported_operations": [
+      "cube_roots",
+      "square_roots",
+      "powers",
+      "fractions",
+      "basic_arithmetic",
+      "complex_expressions"
+    ],
+    "target_audience": "students aged 12-15",
+    "educational_framework": "PEMDAS"
+  }
+}

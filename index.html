@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧮 Math Tutor - Aprende Matemáticas Paso a Paso</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧮 Math Tutor</h1>
+            <p>✨ Aprende matemáticas paso a paso con explicaciones divertidas ✨</p>
+        </div>
+
+        <div class="sticky-expression" id="stickyExpression"></div>
+
+        <div class="section">
+            <h2>🎯 Ejercicios Predefinidos</h2>
+            <div class="exercise-buttons">
+                <button class="exercise-btn" onclick="solveExercise(1)">
+                    📊 Ejercicio 1: Fracciones y Raíces Complejas
+                </button>
+                <button class="exercise-btn" onclick="solveExercise(2)">
+                    🔍 Ejercicio 2: Raíces y Operaciones Mixtas
+                </button>
+                <button class="exercise-btn" onclick="solveExercise(3)">
+                    ⚡ Ejercicio 3: Potencias y Fracciones
+                </button>
+                <button class="exercise-btn" onclick="solveExercise(4)">
+                    🎪 Ejercicio 4: Expresiones Complejas
+                </button>
+                <button class="exercise-btn" onclick="solveExercise(5)">
+                    🚀 Ejercicio 5: Combinaciones Avanzadas
+                </button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✏️ Ejercicio Personalizado</h2>
+            <div class="custom-input-section">
+                <div class="symbol-palette">
+                    <button class="symbol-btn" onclick="insertSymbol('√')">√</button>
+                    <button class="symbol-btn" onclick="insertSymbol('∛')">∛</button>
+                    <button class="symbol-btn" onclick="insertSymbol('²')">²</button>
+                    <button class="symbol-btn" onclick="insertSymbol('³')">³</button>
+                    <button class="symbol-btn" onclick="insertSymbol('×')">×</button>
+                    <button class="symbol-btn" onclick="insertSymbol('÷')">÷</button>
+                    <button class="symbol-btn" onclick="insertSymbol('(')">(</button>
+                    <button class="symbol-btn" onclick="insertSymbol(')')">)</button>
+                    <button class="symbol-btn" onclick="insertSymbol('/')">/</button>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="customExpression" class="custom-input"
+                           placeholder="Escribe tu ejercicio: ej. ∛27+√16, 3²+2³, √16+√9..."
+                           onkeypress="handleEnter(event)">
+                    <button class="solve-btn" onclick="solveCustom()">🎯 Resolver</button>
+                </div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
+                    💡 Ejemplos: ∛27+5, √16+√9, 3²+2³, ∛125, √64+3
+                </p>
+            </div>
+        </div>
+
+        <div class="solution" id="solution"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/mathParser.js"></script>
+    <script src="js/exerciseData.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

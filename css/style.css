@@ -1,0 +1,578 @@
+/* ================================
+   MATH TUTOR - ESTILOS PRINCIPALES
+   ================================ */
+
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ================================
+   LAYOUT PRINCIPAL
+   ================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ================================
+   HEADER
+   ================================ */
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.8s ease-out;
+    backdrop-filter: blur(10px);
+}
+
+.header h1 {
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 400;
+}
+
+/* ================================
+   EXPRESIÓN STICKY
+   ================================ */
+
+.sticky-expression {
+    position: sticky;
+    top: 20px;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    display: none;
+    animation: slideIn 0.5s ease-out;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ================================
+   SECCIONES
+   ================================ */
+
+.section {
+    background: rgba(255, 255, 255, 0.95);
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.6s ease-out;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.section h2 {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* ================================
+   BOTONES DE EJERCICIOS
+   ================================ */
+
+.exercise-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.exercise-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.exercise-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.exercise-btn:hover::before {
+    left: 100%;
+}
+
+.exercise-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.exercise-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================
+   SECCIÓN DE ENTRADA PERSONALIZADA
+   ================================ */
+
+.custom-input-section {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.custom-input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+}
+
+.custom-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+}
+
+.solve-btn {
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.solve-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.solve-btn:active {
+    transform: translateY(0);
+}
+
+/* ================================
+   PALETA DE SÍMBOLOS
+   ================================ */
+
+.symbol-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.symbol-btn {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    min-width: 45px;
+    font-weight: bold;
+}
+
+.symbol-btn:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.symbol-btn:active {
+    transform: scale(1.05);
+}
+
+/* ================================
+   SOLUCIÓN
+   ================================ */
+
+.solution {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.solution h2 {
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.step {
+    background: white;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #4facfe;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    animation: stepIn 0.5s ease-out;
+    backdrop-filter: blur(5px);
+    transition: transform 0.2s ease;
+}
+
+.step:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.step h3 {
+    color: #4facfe;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.step-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.calculation {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    border: 2px solid #e9ecef;
+    font-weight: bold;
+    color: #495057;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.result {
+    background: linear-gradient(135deg, #56ab2f, #a8e6cf);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: pulse 2s infinite;
+}
+
+/* ================================
+   TOOLTIPS
+   ================================ */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    color: #4facfe;
+    font-weight: bold;
+    border-bottom: 2px dotted #4facfe;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 15px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -150px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ================================
+   MENSAJES DE ERROR
+   ================================ */
+
+.error {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: shake 0.5s ease-in-out;
+}
+
+/* ================================
+   ANIMACIONES
+   ================================ */
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes stepIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .symbol-palette {
+        justify-content: center;
+    }
+
+    .exercise-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .sticky-expression {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .solution {
+        padding: 20px;
+    }
+
+    .step {
+        padding: 15px;
+    }
+
+    .calculation {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+    }
+
+    .symbol-btn {
+        padding: 8px 12px;
+        font-size: 1rem;
+        min-width: 40px;
+    }
+
+    .custom-input {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .solve-btn {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+}
+
+/* ================================
+   EFECTOS ESPECIALES
+   ================================ */
+
+/* Efecto de glassmorphism */
+.header,
+.section,
+.solution {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Sombras dinámicas */
+.exercise-btn,
+.solve-btn,
+.symbol-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover glow effect */
+.custom-input:focus,
+.exercise-btn:hover,
+.solve-btn:hover {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+    animation: pulse 1s infinite;
+}
